@@ -17,6 +17,7 @@
 
         html {
             background: #f9f9f9;
+            font-size: 16px;
         }
 
         body {
@@ -53,45 +54,115 @@
         }
 
         .flow-pub-content .pub-item .pub-item-success-info {
-            display：table;
+            display: block;
             margin: 0 auto;
             font-size: 26px;
             color: #515151;
             margin-top: 10px;
-			vertical-align:middle;
             word-break: break-all;
             padding: 0 10px;
+        }
+
+        .flow-pub-content .pub-item .pub-item-success-qrcode {
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .flow-pub-content .pub-item .pub-item-success-qrcode img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .flow-pub-content .pub-item .pub-item-success-qrcode .success-qrcode {
+            display: block;
+            width: 192px;
+            height: 192px;
+            margin: 0 auto;
+            border: 6px solid #fff;
+        }
+
+        .flow-pub-content .pub-item .pub-item-success-qrcode .qrcode-info {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 15px;
+            color: rgba(81, 81, 81, .7);
+        }
+
+        .flow-pub-content .pub-item .pub-item-success-qrcode .qrcode-info .anther-info {
+            font-size: 14px;
+            font-style: normal;
+        }
+
+        .flow-pub-content .pub-item .again-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flow-pub-content .pub-item .again-btn button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #5990cf;
+            padding: 0 15px;
+            min-width: 140px;
+            height: 40px;
+            color: #ffffff;
+            margin: 0 auto;
+            font-size: 16px;
+            text-align: center;
+            display: block;
+            border: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .pup_btn_l {
+            width: 100px;
+            height: 30px;
+            background: rgba(44, 130, 252, 1);
+            border-radius: 2px;
+            text-align: center;
+            line-height: 30px;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+
+        .view_history{
+            margin: 50px auto 0px;
+        }
+
+        .algin_fill{
+            margin: 20px auto 0px;
+            cursor: pointer;
         }
 
     </style>
 </head>
 <body>
-
-<div class="flow-pub-content">
-    <div class="pub-item">
-        <div class="pub-item-area">
-            <img class="pub-item-success-img" src="icon-publish.png">
-            <div class="pub-item-success-info"><div id="show_time" style="float: left;font-size: 26px; margin-left: 5px;"/>2020-09-16 16:16:05</div><div style="font-size: 26px;">王玉琨&nbsp;:&nbsp;431103199809270029</div></div>
-			<div class="pub-item-success-info">提交进门登记表成功</div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
-<script src="ours_phone.min.js?V=3.2.21"></script>
-
 <script type="text/javascript">
+    
+    $(".pup_btn_l").on("click", function () {
+        window.location.href =$(this).data("url");
+    })
     var successCloseState = window.opener;
     if(successCloseState == null){$("#successClose-div").hide()};
-	// setInterval("fun(show_time)",1);
 	
-	function fun(timeID){
+    
+</script>
+<script>
+setInterval("fun(show_time)",1);
+	function fun(timeID){ 
 	var date = new Date();  //创建对象  
 	var y = date.getFullYear();     //获取年份  
 	var m =date.getMonth()+1;   //获取月份  返回0-11  
 	var d = date.getDate(); // 获取日  
 	var h = date.getHours();  //时
 	var minute = date.getMinutes()  //分
-	var s = date.getSeconds(); //秒
+	var s = 14 //秒
 	//var sss = date.getMilliseconds() ; //毫秒
 	if(m<10){
 	m = "0"+m;
@@ -111,13 +182,21 @@
 	s = "0"+s;
 	}
 
-	var	abc =  y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s;
-	document.getElementById(timeID.id).innerHTML =  abc;
-	  }
-	  
-	  // fun(document.getElementById("show_time"));
+	document.getElementById(timeID.id).innerHTML =  y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s+"王玉琨：431103199809270029";
+	//document.write(y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s);
+	  }    
 
 </script>
+<div class="flow-pub-content">
+    <div class="pub-item">
+        <div class="pub-item-area">
+            <img class="pub-item-success-img" src="icon-publish.png">
+            <span class="pub-item-success-info"><div id="show_time"></div><div>提交进门登记表成功</div></span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/res_common/third/jquery/jquery-2.1.4.min.js"></script>
+<script src="/res_common/ours_phone.min.js?V=3.2.21"></script>
 
 </body>
 </html>
